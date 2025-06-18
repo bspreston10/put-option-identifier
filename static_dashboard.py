@@ -96,13 +96,13 @@ def main():
         spreads = load_spreads(expiration_selector)
     
         if expiration_selector == '2025-06-27':
-            spread_metrics = pd.read_csv(os.path.join(data_dir, 'spreads_metrics_627.csv'))
-            scored_spreads = pd.read_csv(os.path.join(data_dir, 'scored_spreads_627.csv'))
-            computer_picks = pd.read_csv(os.path.join(data_dir, 'computer_picks_627.csv'))
+            spread_metrics = pd.read_csv(os.path.join(current_dir, 'spreads_metrics_627.csv'))
+            scored_spreads = pd.read_csv(os.path.join(current_dir, 'scored_spreads_627.csv'))
+            computer_picks = pd.read_csv(os.path.join(current_dir, 'computer_picks_627.csv'))
         else:
-            spread_metrics = pd.read_csv(os.path.join(data_dir, 'spreads_metrics_1027.csv'))
-            scored_spreads = pd.read_csv(os.path.join(data_dir, 'scored_spreads_1027.csv'))
-            computer_picks = pd.read_csv(os.path.join(data_dir, 'computer_picks_1027.csv'))
+            spread_metrics = pd.read_csv(os.path.join(current_dir, 'spreads_metrics_1027.csv'))
+            scored_spreads = pd.read_csv(os.path.join(current_dir, 'scored_spreads_1027.csv'))
+            computer_picks = pd.read_csv(os.path.join(current_dir, 'computer_picks_1027.csv'))
         
         # Merge metrics with scores
         spread_metrics_total = pd.merge(
