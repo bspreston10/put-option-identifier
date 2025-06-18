@@ -7,7 +7,7 @@
 **Stocks Available:** Below are the stocks that will be traded
 - TSLA – Tesla Inc. (High volatility, growth/EV sector)
 - NVDA – NVIDIA Corp. (Tech/AI momentum, very liquid options)
-- AAPL – Apple Inc. (Mega-cap stability, tight spreads, great volume)
+- COIN – Coinbase Global Inc. (Crypto, highly volatile)
 - XLE – Energy Select Sector SPDR Fund (Energy exposure & macro sensitivity)
 - JPM – JPMorgan Chase & Co. (Financial sector with strong option chains)
 
@@ -22,17 +22,22 @@
 ## Current Portfolios (As of EOD of previous day)
 
 # Strucutre of Bot
-flowchart TD
-    A[Start: Initialize SPYOptionsAnalyzer] --> B[Fetch Option Chains from Tradier API]
-    B --> C[Find Put Spreads]
-    C --> D[Calculate Spread Metrics<br/>(BS Model + Greeks)]
-    D --> E[Score Spreads<br/>(MinMaxScaler + Weighted Sum)]
-    E --> F[Filter for Personal Picks]
-    F --> G[Find Option Contracts (long/short legs)]
-    F --> H[Unscaled Metrics]
-    E --> I[Computer-Picked Spreads<br/>Filters + Score]
-    G --> J[Verify with Broker]
+![Screenshot 2025-06-17 at 7 55 52 PM](https://github.com/user-attachments/assets/13350b93-a335-4a94-a1aa-316b6313a328)
+- **Green:** Start of the process, where the user enters the stock ticker and expiration date
+- **Purple:** The class the analyzer is under
+- **Blue:** Initial option chain scrape for the ticker, collected using the Tradier API (red diamond)
+- **Light Red/Pink:** Spread metric calculator that takes the optoin chain dataframe and creates the metrics below:
+    - Net Premium/Max Profit: Short market bid - long market ask
+    - Width: The distance (in $) between the short and long strikes
+    - Max Loss: (Short strike - long strike) - net premium
+    - Breakeven: Short strike - net premium
+    - Reward Risk Ratio: net premium / ((short strike - long strike) - net premium)
+    - Probability of Profit: 1 - |short delta|
+    - Black-Scholes Theoretical Price: Calcualted using a Black-Scholes pricing model to obtain a theoretical price of the option
+    - Black-Scholes Z-score: The normalized distance (error) between the Black-Scholes price and the actual price
+- **Yellow:** Where the model gives a score from 0-100 based on a personal weighing system using the metrics calculated above
+- **Teal:** A streamlit dashboard where the user can filter and make their personal choice on what option spread to take
+- **Orange:** Following certain criteria, the model picks the best option contract
 
-    style A fill:#f9f,stroke:#333,stroke-width:1px
-    style J fill:#9f9,stroke:#333,stroke-width:1px
+# Dashboard
 
