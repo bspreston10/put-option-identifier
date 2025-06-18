@@ -52,10 +52,10 @@ def add_social_info():
 @st.cache_data
 def load_spreads(expiration_selector):
     if expiration_selector == '2025-06-27':
-        with open('spreads_627.pkl', 'rb') as f:
+        with open('data/spreads_627.pkl', 'rb') as f:
             return pickle.load(f)
     else:
-        with open('spreads_1027.pkl', 'rb') as f:
+        with open('data/spreads_1027.pkl', 'rb') as f:
             return pickle.load(f)
 
 
