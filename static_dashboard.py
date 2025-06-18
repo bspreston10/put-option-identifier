@@ -176,7 +176,7 @@ def main():
             show_computer_pick_filter = n2.checkbox("Show Computer Generated Pick", value=True, key="show_computer_picks")
             show_iv = n3.checkbox("Show IV Surface", value=True, key="show_iv_surface")
             show_scatter = n4.checkbox("Show Scatter Plot", value=True, key="show_scatter_plot")
-            advanced_metrics = st.selectbox("Show Advanced Options", options=['Yes', 'No'])
+            advanced_metrics = st.selectbox("Show Advanced Metrics", options=['Yes', 'No'])
 
             
             # Show top spreads
