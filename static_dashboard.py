@@ -62,6 +62,7 @@ def load_spreads(expiration_selector):
             return pickle.load(f)
 
 current_dir = os.path.dirname(__file__)
+data_dir = os.path.join(current_dir, 'data')
 def main():
 # ===== SIDEBAR FILTERS =====
     add_social_info()  # Add social media links to the sidebar
