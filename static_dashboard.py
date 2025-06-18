@@ -3,7 +3,6 @@ import streamlit as st
 import pandas as pd
 import numpy as np
 import plotly.graph_objects as go
-from streamlit_socials import add_social_info
 
 def add_social_info():
     """Adds social media links to the sidebar with icons"""
