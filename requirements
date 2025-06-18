@@ -1,11 +1,6 @@
-pickle
 streamlit
 numpy
-plotly.graph_objects
-yfinance
+plotly
 datetime
-pytz
-scikit-learn
-scipy
 requests
 pandas
