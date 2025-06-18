@@ -1,0 +1,11 @@
+pickle
+streamlit
+numpy
+plotly
+yfinance
+datetime
+pytz
+scikit-learn
+scipy
+requests
+pandas
