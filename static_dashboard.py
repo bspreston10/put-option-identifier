@@ -52,7 +52,6 @@ def add_social_info():
 
 @st.cache_data
 def load_spreads(expiration_selector):
-    current_dir = os.path.dirname(__file__)
     if expiration_selector == '2025-06-27':
         file_path = os.path.join(current_dir, 'data', 'spreads_627.pkl')
         with open(file_path, 'rb') as f:
@@ -62,7 +61,7 @@ def load_spreads(expiration_selector):
         with open(file_path, 'rb') as f:
             return pickle.load(f)
 
-
+current_dir = os.path.dirname(__file__)
 def main():
 # ===== SIDEBAR FILTERS =====
     add_social_info()  # Add social media links to the sidebar
