@@ -3,6 +3,7 @@ import streamlit as st
 import pandas as pd
 import numpy as np
 import plotly.graph_objects as go
+import os
 
 def add_social_info():
     """Adds social media links to the sidebar with icons"""
@@ -51,11 +52,14 @@ def add_social_info():
 
 @st.cache_data
 def load_spreads(expiration_selector):
+    current_dir = os.path.dirname(__file__)
     if expiration_selector == '2025-06-27':
-        with open('.../data/spreads_627.pkl', 'rb') as f:
+        file_path = os.path.join(current_dir, 'data', 'spreads_627.pkl')
+        with open(file_path, 'rb') as f:
             return pickle.load(f)
     else:
-        with open('data/spreads_1027.pkl', 'rb') as f:
+        file_path = os.path.join(current_dir, 'data', 'spreads_1027.pkl')
+        with open(file_path, 'rb') as f:
             return pickle.load(f)
 
 
@@ -89,16 +93,16 @@ def main():
     
     # Load data
     try:
+        spreads = load_spreads(expiration_selector)
+    
         if expiration_selector == '2025-06-27':
-            spreads = load_spreads(expiration_selector)
-            spread_metrics = pd.read_csv('/Users/bennett/Desktop/option_live_project/spreads_metrics_627.csv')
-            scored_spreads = pd.read_csv('/Users/bennett/Desktop/option_live_project/scored_spreads_627.csv')
-            computer_picks = pd.read_csv('/Users/bennett/Desktop/option_live_project/computer_picks_627.csv')
+            spread_metrics = pd.read_csv(os.path.join(data_dir, 'spreads_metrics_627.csv'))
+            scored_spreads = pd.read_csv(os.path.join(data_dir, 'scored_spreads_627.csv'))
+            computer_picks = pd.read_csv(os.path.join(data_dir, 'computer_picks_627.csv'))
         else:
-            spreads = load_spreads(expiration_selector)
-            spread_metrics = pd.read_csv('/Users/bennett/Desktop/option_live_project/spreads_metrics_1027.csv')
-            scored_spreads = pd.read_csv('/Users/bennett/Desktop/option_live_project/scored_spreads_1027.csv')
-            computer_picks = pd.read_csv('/Users/bennett/Desktop/option_live_project/computer_picks_1027.csv')
+            spread_metrics = pd.read_csv(os.path.join(data_dir, 'spreads_metrics_1027.csv'))
+            scored_spreads = pd.read_csv(os.path.join(data_dir, 'scored_spreads_1027.csv'))
+            computer_picks = pd.read_csv(os.path.join(data_dir, 'computer_picks_1027.csv'))
         
         # Merge metrics with scores
         spread_metrics_total = pd.merge(
