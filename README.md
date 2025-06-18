@@ -1,7 +1,7 @@
 # Bennett vs. Bot: Who can perform better trading credit spreads?
 
 ## Criteria
-**Option Expiration:** To keep the competition more manageable, both me and the bot will only be trading options contracts with 10 days to expiration
+**Option Expiration:** To keep the research more manageable, the bot will only be trading options contracts with 10 days to expiration
 **Trade Frequency:** Every week a new spread will be made for each stock shown below
 **Risk Management:** To keep simplicity, neither me or the bot is allowed to close any positions before expiration
 **Stocks Available:** Below are the stocks that will be traded
@@ -14,12 +14,8 @@
 **Start Date:** Wednesday, June 18th
 **End Date:** Trading will stop Wednesday, July 12th
 
-# Current Metrics
-## Leaderboard:
-1st. Me
-2nd. Bot
-
 ## Current Portfolios (As of EOD of previous day)
+
 
 # Strucutre of Bot
 ![Screenshot 2025-06-17 at 7 55 52 PM](https://github.com/user-attachments/assets/13350b93-a335-4a94-a1aa-316b6313a328)
